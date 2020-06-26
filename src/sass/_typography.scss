@@ -1,0 +1,51 @@
+
+
+.header__main{
+    display: inline-block;
+    text-align: center;
+    padding: 1.2rem .5rem;
+    background-color: $base_color_light;
+    color: $base_color_dark;
+    font-family: $font_family_1;
+    font-size: 3rem;
+    text-transform: uppercase;
+
+    &__large{
+        font-size: 3.5rem;
+        text-transform: uppercase;
+        background-color: $base_color_dark;
+        color: $base_color_light;
+      
+    }
+
+    @include respond(phone-700) {
+        font-size: 2.2rem;
+    }
+}
+
+.header__second{
+    display: inline-block;
+    text-align: center;
+
+    color: $base_color_dark;
+    font-family: $font_family_3;
+    font-size: 2.2rem; 
+    padding: 1.2rem .5rem;
+    text-transform: uppercase;
+
+    &--large{
+        // font-size: 3.5rem;
+        text-transform: uppercase;
+        background-color: $base_color_dark;
+        color: $base_color_light;
+      
+    }
+    
+
+    @include respond(phone-700) {
+        font-size: 2.0rem;
+    }
+}
+
+
+

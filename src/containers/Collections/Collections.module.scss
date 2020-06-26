@@ -1,0 +1,18 @@
+.Collections{
+    grid-column:center-start/col-end 4 ;
+    display: grid;
+    // justify-items: stretch;
+    grid-row-gap: 2rem;
+    padding: 2rem 0rem 2rem 0rem;
+    background-color:var(--base_color_dark);
+    margin: 1rem 0rem 1rem 0rem;
+}
+
+
+//   @include respond(tabl-lands-1100) {
+//       grid-template-rows: minmax(min-content, 25vh ) minmax(50vh, max-content)    min-content min-content;
+//   }
+
+//   @include respond(tabl-port-900) {
+//       grid-template-rows: minmax(min-content, 25vh ) minmax(45vh, min-content)   min-content min-content;
+//   }

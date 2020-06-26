@@ -1,0 +1,14 @@
+
+.Header{
+    background-color:var(--base_color_dark);
+    grid-column: full-start/ full-end;
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    h3{
+        color: var(--color_gold);
+        font-family: var( --font_family_1);
+        text-transform: uppercase;
+    }
+}

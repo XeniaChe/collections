@@ -1,0 +1,21 @@
+.Collection{
+    // width: 90%;
+    background-color: var( --base_color_light);
+    display: grid;
+    grid-template-columns:min-content 1fr;
+    grid-column-gap: 3rem;
+    justify-items: center;
+    align-items: center;
+    margin: 0 2rem 0 2rem;
+    .img{
+        height: 10rem;
+        width: 10rem;
+        border-radius: 50%;
+        clip-path: circle(50% at 50% 50%);
+        display: block;
+        margin: 1rem;
+    }
+    h2{
+        font-size: 2.2rem;
+    }
+}
