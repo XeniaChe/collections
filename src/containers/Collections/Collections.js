@@ -5,51 +5,72 @@ import Collection from '../../components/collectionSingle/Collection'
 
 
 const Collections = (props) => {
-    // const collectionsImport = data.collections;
-    // const assetsImport = data.assets;
 
     const [colState, setColState] = useState({
         collections: [],
         // assets: []
-        match: [],
-        matchReseived: false
+        // match: [],
+        collectionReady: false
     });
 
     // getting master assets
-    const getMatchingAssest = async () => {
-        let matchAssets  =  await  Promise.all(colState.collections.map( async el => {
-            let res = await data.getAssetsByCollectionAsync(el.id);
-            let  match = res.find( el2 => el2.id === el.masterAssetId );
-            console.log(match)
-            return match;
+    const getMastergAsset = async () => {
+        let matchingAssets  =  await  Promise.all(colState.collections.map( async el => {
+            let res = await data.getAssetByIdAsync(el.masterAssetId);
+            return res;
         }));
-        
-        setColState({collections: colState.collections,
-            match: matchAssets,
-            matchReseived: true 
+
+        ////////with separate match object in state
+        // setColState({collections: colState.collections,
+        //     match: matchAssets,
+        // })
+
+        let collections = [...colState.collections];
+        collections.map(el => {
+            let masterEl = matchingAssets.find(el2 => el2.collectionId === el.id);
+            return el.master = masterEl;
+        });
+        setColState({
+            collections: collections
         })
     }
+
+   
     
 
     useEffect(()=>{
+        ////////with separate match object in state
+        // const collectionsImport = async() => {
+        //     const response = await  data.getCollectionsAsync();
+        //     setColState({collections: response,
+        //         match: colState.match,
+        //     })
+        // };
+        // collectionsImport();
+        
         const collectionsImport = async() => {
             const response = await  data.getCollectionsAsync();
             setColState({collections: response,
-                match: colState.match,
-                matchReseived: false })
+                // match: colState.match,  //with separate match object in state
+                collectionReady: true
+            })
         };
         collectionsImport();
-        getMatchingAssest();
-    }, [colState.collections])
+        
+
+    }, []);
+
+    useEffect(() => {
+        getMastergAsset();
+    },[colState.collectionReady])
     
     //renmdering collections list
     let collections = null;
-    if (colState.matchReseived) {
         collections = colState.collections.map(el =>{
-            return <Collection key={el.id} name={el.name} />
-        });
+            return <Collection key={el.id} name={el.name} pathName={"Homer.jpg"}/>
+    });
     
-    }
+   
 
     return (
         <div className={classes.Collections}>
@@ -61,3 +82,4 @@ const Collections = (props) => {
 export default Collections;
 
 //pathName={colState.match[el.id].path} 
+//path={el.master.path}
