@@ -17,13 +17,9 @@
         display: block;
         background-color: var(--base_color_light) ;
         margin-left: 5rem;
-        // border: .5rem  solid var(--color_gold);
         border: .5rem  solid transparent;
         padding: 3px;
         transition: all .4s;
-
-        // &:hover{
-        // }
     }
   
     .img.active{ 
@@ -44,10 +40,10 @@
     }
 
     &:hover  .img{
-        // box-shadow: .5rem .5rem 1.5rem rgba(black, 0.4);
-        // border: .5rem solid var(--color_red);
         box-shadow: .5rem .5rem 1.5rem rgba(black, 0.4);
-        border: .2rem solid transparent;
+        border: .5rem solid var(--color_red);
+        // box-shadow: .5rem .5rem 1.5rem rgba(black, 0.4);
+        // border: .2rem solid transparent;
     }
 
     // &:hover{

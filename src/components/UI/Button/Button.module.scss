@@ -9,7 +9,7 @@
     cursor: pointer;
     display: inline-block;   
     padding: 0.5rem 1.0rem;
-    background-color:var(--color_red);
+    background-color:var(--color_red_light);
     color: var(--base_color_light);
     box-shadow: 0 .5rem 1rem rgba(black, 0.4);  
     font-size: 1.6rem;
@@ -19,7 +19,7 @@
     margin-right: 2rem;
 
     &:hover {
-        background-color: var(--color_red_light);
+        // background-color: var(--color_red);
         color: var(--color_gold);
         border: 2px solid var(--color_red_light);
     }
