@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import classes from './Collections.module.scss';
 import * as data from '../data';
-import Collection from '../../components/collectionSingle/Collection'
+import Collection from '../../components/collectionSingle/Collection';
+import Assets from '../../components/Assets/Assets';
 
 
 const Collections = (props) => {
@@ -9,11 +10,21 @@ const Collections = (props) => {
     const [colState, setColState] = useState({
         collections: [],
         collectionReady: false,
-        mastersReady: false
+        mastersReady: false,
     });
+
+    const [assetsState, setAssetsState] = useState({
+        clickedID: null, 
+        assets: [],
+        ready: false
+    });
+
+    const [makeMasterState, setMakeMaster] = useState({
+        buttonClicked: false
+    })
    
     
-    //getting colletions list
+    //Getting  colletions list. 
     useEffect(()=>{
         const collectionsImport = async() => {
             const response = await  data.getCollectionsAsync();
@@ -25,7 +36,7 @@ const Collections = (props) => {
         collectionsImport();
     }, []);
 
-    // adding masters to collections
+    // Getting and adding each col-tion's INITIAL master. 
     const getMastergAsset = async () => {
         let matchingAssets  =  await  Promise.all(colState.collections.map( async el => {
             let res = await data.getAssetByIdAsync(el.masterAssetId);
@@ -39,27 +50,74 @@ const Collections = (props) => {
         });
         setColState({
             collections: collections,
+            // collectionReady: colState.collectionReady,
             mastersReady: true
         })
     };
 
-    //calling adding masters to collections
+    //Calling adding INITIAL masters to collections. 
     useEffect(() => {
         getMastergAsset();
     },[colState.collectionReady])
+
+
+
+    
+    //get clicked collection's assets
+    const getAssets = async (id) => {
+        let assetsResult = await data.getAssetsByCollectionAsync(id);
+
+        setAssetsState({
+            clickedID: id,
+            assets: assetsResult, 
+            ready: true
+        })
+    };
+
+    // Collection on Click.  
+    const getCollID = (id) => {
+        //get the ID
+        let gotId = id;
+        // setAssetsState({
+        //     clickedID: gotId
+        // });
+        
+        //get the assets
+        getAssets(gotId);       
+    };
     
     //rendering collections list
     let collections = null;
     if(colState.mastersReady) {
         collections = colState.collections.map(el =>{
-            return <Collection key={el.id} name={el.name} loader={"Homer.jpg"}  path={el.master.path}/>
+            return <Collection key={el.id} name={el.name}  path={el.master.path} id={el.id} click={() =>getCollID(el.id)}/>
         });
-    }
+    };
+
+
+    //make master Button
+    const makeMaster = (id) => {
+        let clicked = makeMasterState.buttonClicked;
+        let clickedId = id;
+        console.log(clickedId)
+        setMakeMaster({
+            buttonClicked: !clicked,
+            newMastersID: clickedId
+        });
+
+        //rewriting new masters id in collection
+
+        //getting new masters object
+        // getMastergAsset();
+    };
 
     return (
-        <div className={classes.Collections}>
-            {collections}
-        </div>
+        <Fragment>
+            <div className={classes.Collections}>
+                {collections}
+            </div>
+            {assetsState.ready ?  <Assets list={assetsState.assets} id={assetsState.clickedID} click={makeMaster}/> : null}
+        </Fragment>
     )
 };
 

@@ -1,0 +1,13 @@
+.Assets{
+    grid-column:col-start 5/center-end;
+    align-self: start;
+    display: grid;
+    grid-template-rows: minmax(min-content, max-content);
+    grid-row-gap: .5rem;
+    align-items:  center;
+    padding: 2rem 0rem 2rem 0rem;
+    background-color:var(--base_color_dark);
+    margin: 5rem 0rem 5rem 0rem;
+    margin-left: -5rem;
+    margin-right: -10rem;
+}

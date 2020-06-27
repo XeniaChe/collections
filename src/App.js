@@ -9,7 +9,6 @@ function App() {
   return (
     <div className={classes.App}>
       <Header/>
-      {/* hello!! World!! */}
       <Collections/>
       <Footer/>
     </div>

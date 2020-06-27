@@ -1,21 +1,37 @@
 .Collection{
-    // width: 90%;
+    min-height: 12rem;
     background-color: var( --base_color_light);
     display: grid;
     grid-template-columns:min-content 1fr;
+    grid-template-rows: min-content;
     grid-column-gap: 3rem;
     justify-items: center;
     align-items: center;
     margin: 0 2rem 0 2rem;
+    border-left: 5px solid transparent;
+    transition: all .4s;
+
     .img{
         height: 10rem;
         width: 10rem;
         border-radius: 50%;
-        clip-path: circle(50% at 50% 50%);
         display: block;
         margin: 1rem;
+        border: .5rem  solid transparent;
+        transition: all .4s;
+        // &:hover{
+        //     box-shadow: .5rem .5rem 1.5rem rgba(black, 0.4);
+        //     border: .5rem solid var(--color_red);
+        // }
     }
     h2{
         font-size: 2.2rem;
+    }
+    &:hover {
+        border-left: 5px solid var(--color_red);
+    }
+    &:hover  .img{
+        box-shadow: .5rem .5rem 1.5rem rgba(black, 0.4);
+        border: .2rem solid transparent;
     }
 }
