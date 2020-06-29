@@ -9,7 +9,7 @@
       box-sizing: inherit;
   }
   :root{
-    --color_gold:#FFD700; 
+    // --color_gold:#FFD700; 
     --color_gold:#ffa41b; 
     --color_gold_light:#fcd59b; 
     --color_red:#800000; 
@@ -19,6 +19,10 @@
 
     --font_family_1: 'Poller One', cursive;
     --font_family_2: 'Roboto', sans-serif;
+
+    --transition: all .4s;
+
+    --image_boredr_transp: .3rem  solid transparent;
 
 
   }

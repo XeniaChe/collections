@@ -83,7 +83,7 @@ const Collections = (props) => {
         getAssets(gotId);       
     };
     
-    //make master Button
+    //Make master Button
     const makeMaster = (id) => {
         let clickedId = id;
 
@@ -98,6 +98,7 @@ const Collections = (props) => {
 
             let collections = [ ...colState.collections];
             collections[collectionIndex].master = response;
+            collections[collectionIndex].masterAssetId = clickedId;
 
             setColState({
                 collections: collections,
@@ -113,7 +114,9 @@ const Collections = (props) => {
     let collections = null;
     if(colState.mastersReady) {
         collections = colState.collections.map(el =>{
-            return <Collection key={el.id} name={el.name}  path={el.master.path} id={el.id} click={() =>getCollID(el.id)}/>
+            return <Collection key={el.id} name={el.name}  path={el.master.path} id={el.id} 
+                    click={() =>getCollID(el.id)}
+                    clickedID={assetsState.clickedID}/>
         });
     };
 
@@ -123,7 +126,7 @@ const Collections = (props) => {
             <div className={classes.Collections}>
                 {collections}
             </div>
-            {assetsState.ready ?  <Assets list={assetsState.assets} id={assetsState.clickedID} 
+            {assetsState.ready ?  <Assets list={assetsState.assets} 
                                         click={makeMaster}
                                         collections={colState.collections}
                                         parentID={assetsState.clickedID}/> : null}

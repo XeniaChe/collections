@@ -14,15 +14,34 @@
     box-shadow: 0 .5rem 1rem rgba(black, 0.4);  
     font-size: 1.6rem;
     font-family:var(--font_family_1);
-    transition: all .2s;
+    transition:var(--transition);
     border: 2px solid transparent;
     margin-right: 2rem;
 
     &:hover {
-        // background-color: var(--color_red);
         color: var(--color_gold);
         border: 2px solid var(--color_red_light);
+        transform: scale(1.1);
     }
+
+    &:active,
+    &:focus{
+        transform: translateY(0px);
+        border: 2px solid transparent;
+        outline: none;
+    }
+
+    &:disabled{
+        background-color: gray;
+
+        &:hover{
+            color: var(--base_color_light);
+            border: 2px solid transparent;
+            transform: translateY(0px);
+        }
+    }
+}
+
 
     // @include respond(tabl-lands-1200) {
     //     padding: 1.5rem 2.2rem;
@@ -36,6 +55,3 @@
     //     padding: 1.0rem 1.5rem;
     //     font-size: 1.5rem;
     // }  
-
-}
-

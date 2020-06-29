@@ -6,9 +6,13 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 const Collection = (props) => {
-
+    let style = [classes.Collection]
+    //check if active 
+    if (props.clickedID === props.id) {
+        style.push(classes.Collection_active)
+    }
     return (
-        <div className={classes.Collection} onClick={props.click}>
+        <div className={style.join(' ')} onClick={props.click}>
             <LazyLoadImage
             className={classes.img}
             src={`./images/${props.path}`}

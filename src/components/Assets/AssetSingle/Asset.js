@@ -7,27 +7,32 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 const Asset = (props) => {
-    let style =[classes.img];
+    let styleImage =[classes.img];
+    let disable = false;
+    let styleBox = [classes.Asset]
 
     let collections = props.collections;
    
     let colIndex = collections.findIndex( el => {
         return el.id === props.parentID;
     });
+
     if (collections[colIndex].masterAssetId === props.id) {
-        style.push(classes.active);
+        styleImage.push(classes.active);
+        disable = true;
+        styleBox.push(classes.Box_active)
     };
     
 
     return (
-        <div className={classes.Asset}>
+        <div className={styleBox.join(' ')}>
             <LazyLoadImage 
                 effect="blur"
                 src={`./images/${props.path}`}
-                className={style.join(' ')}/>
+                className={styleImage.join(' ')}/>
             <p>{props.name}</p>
             <p>{props.id}</p>
-            <Button click={props.click}>make master</Button>
+            <Button click={props.click} disable={disable}>make master</Button>
         </div>
     )
 };
