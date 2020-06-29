@@ -9,22 +9,34 @@
     align-items: center;
     margin: 0 .5rem 0 .5rem;
     align-content: center;
+    border-left: 5px solid transparent;
+    transition: all .7s;
 
+    &:hover {
+        border-left: 5px solid var(--color_red_light);
+    }
+    
+    &:hover .img{
+        box-shadow: .5rem .5rem 1.5rem rgba(black, 0.4);
+        // border: .5rem solid var(--color_red);
+        border: .2rem solid transparent;
+    }
     .img{
-        height: 10.5rem;
-        width: 10.5rem;
+        height: 11rem;
+        width: 11rem;
         border-radius: 50%;
         display: block;
-        background-color: var(--base_color_light) ;
+        margin: 1rem;
         margin-left: 5rem;
         border: .5rem  solid transparent;
-        padding: 3px;
         transition: all .4s;
     }
   
     .img.active{ 
-        border: .5rem solid var(--color_red);
+        border: .5rem solid var(--color_red_light);
     }
+
+
     p{
         font-size: 2.2rem;
         margin-right: 2rem;
@@ -39,15 +51,42 @@
         background-color: red;
     }
 
-    &:hover  .img{
-        box-shadow: .5rem .5rem 1.5rem rgba(black, 0.4);
-        border: .5rem solid var(--color_red);
-        // box-shadow: .5rem .5rem 1.5rem rgba(black, 0.4);
-        // border: .2rem solid transparent;
-    }
+    .btn {
+        text-decoration: none;
+        border-radius:1rem;
+        cursor: pointer;
+        display: inline-block;   
+        padding: 0.5rem 1.0rem;
+        background-color:var(--color_red);
+        color: var(--base_color_light);
+        box-shadow: 0 .5rem 1rem rgba(black, 0.4);  
+        font-size: 1.6rem;
+        font-family:var(--font_family_1);
+        transition: all .2s;
+        border: 2px solid transparent;
+        margin-right: 2rem;
+       
+        
+        &:hover {
+            color: var(--color_gold);
+            border: 2px solid var(--color_red_light);
+        }
+       
 
-    // &:hover{
-    //     background-color: orangered;
-    // }
+        // @include respond(tabl-lands-1200) {
+        //     padding: 1.5rem 2.2rem;
+        // }
+    
+        // @include respond(tabl-port-900) {
+        //     padding: 1.0rem 1.5rem;
+        // }
+    
+        // @include respond(tabl-port-800) {
+        //     padding: 1.0rem 1.5rem;
+        //     font-size: 1.5rem;
+        // }  
+    
+    }
+  
 }
 

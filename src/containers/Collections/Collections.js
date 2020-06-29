@@ -19,16 +19,13 @@ const Collections = (props) => {
         ready: false
     });
 
-    const [makeMasterState, setMakeMaster] = useState({
-        buttonClicked: false
-    })
-   
     
     //Getting  colletions list. 
     useEffect(()=>{
         const collectionsImport = async() => {
             const response = await  data.getCollectionsAsync();
-            setColState({collections: response,
+            setColState({
+                collections: response,
                 collectionReady: true,
                 mastersReady: false
             })
@@ -42,12 +39,14 @@ const Collections = (props) => {
             let res = await data.getAssetByIdAsync(el.masterAssetId);
             return res;
         }));
-
+        
+        //adding master object to each col-tion 
         let collections = [...colState.collections];
         collections.map(el => {
-            let masterEl = matchingAssets.find(el2 => el2.collectionId === el.id);
+            let masterEl = matchingAssets.find(asset => asset.collectionId === el.id);
             return el.master = masterEl;
         });
+
         setColState({
             collections: collections,
             // collectionReady: colState.collectionReady,
@@ -63,7 +62,7 @@ const Collections = (props) => {
 
 
     
-    //get clicked collection's assets
+    //Get clicked collection's assets
     const getAssets = async (id) => {
         let assetsResult = await data.getAssetsByCollectionAsync(id);
 
@@ -72,20 +71,44 @@ const Collections = (props) => {
             assets: assetsResult, 
             ready: true
         })
+
     };
 
     // Collection on Click.  
     const getCollID = (id) => {
         //get the ID
         let gotId = id;
-        // setAssetsState({
-        //     clickedID: gotId
-        // });
         
         //get the assets
         getAssets(gotId);       
     };
     
+    //make master Button
+    const makeMaster = (id) => {
+        let clickedId = id;
+
+        //find actual working collection 
+        let collectionIndex = colState.collections.findIndex( el => {
+            return el.id === assetsState.clickedID
+        });
+                
+        //getting new masters object
+        const  newMaster = async () => {
+            let response=  await data.getAssetByIdAsync(clickedId);
+
+            let collections = [ ...colState.collections];
+            collections[collectionIndex].master = response;
+
+            setColState({
+                collections: collections,
+                collectionReady:colState.collectionReady,
+                mastersReady:colState.mastersReady,
+            });
+
+        };
+        newMaster();        
+    };
+
     //rendering collections list
     let collections = null;
     if(colState.mastersReady) {
@@ -95,28 +118,15 @@ const Collections = (props) => {
     };
 
 
-    //make master Button
-    const makeMaster = (id) => {
-        let clicked = makeMasterState.buttonClicked;
-        let clickedId = id;
-        console.log(clickedId)
-        setMakeMaster({
-            buttonClicked: !clicked,
-            newMastersID: clickedId
-        });
-
-        //rewriting new masters id in collection
-
-        //getting new masters object
-        // getMastergAsset();
-    };
-
     return (
         <Fragment>
             <div className={classes.Collections}>
                 {collections}
             </div>
-            {assetsState.ready ?  <Assets list={assetsState.assets} id={assetsState.clickedID} click={makeMaster}/> : null}
+            {assetsState.ready ?  <Assets list={assetsState.assets} id={assetsState.clickedID} 
+                                        click={makeMaster}
+                                        collections={colState.collections}
+                                        parentID={assetsState.clickedID}/> : null}
         </Fragment>
     )
 };
