@@ -51,6 +51,9 @@ Page Layouts +Components */
     @if $breakpoint == tabl-lands-1200 {                   //1200px   1200/16=75
         @media (max-width: 75em) { @content }
     };
+    @if $breakpoint == tabl-lands-1350 {                   //1350px   1350/16=81.25
+        @media (max-width: 84.4em) { @content }
+    };
     @if $breakpoint == big-desktop {                 //1800px  
         @media (min-width: 112.5em) { @content }
     };
