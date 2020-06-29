@@ -14,7 +14,7 @@ const Collections = (props) => {
     });
 
     const [assetsState, setAssetsState] = useState({
-        clickedID: null, 
+        clickedColID: null, 
         assets: [],
         ready: false
     });
@@ -60,22 +60,65 @@ const Collections = (props) => {
     },[colState.collectionReady])
 
 
+ 
 
-    
+    //Sorting by NAME
+    const SortByName = (a, b) => {
+        let aFixed = a.name.toUpperCase(); 
+        let bFixed = b.name.toUpperCase(); 
+        if (aFixed<bFixed)  {
+            return -1}
+        else if (aFixed>bFixed){ 
+            return 1
+        } 
+        return 0;
+    };
+    //Sorting by ID
+    const SortByID = (a, b) => {
+        return a.id - b.id; 
+    };
+    // Sorting type changing Handler
+    const sortingTypeHandler = (event) => {
+        let sortType = event.target.value; 
+        console.log( `sorting type changed`)
+        console.log(sortType);
+
+        let assetsClone = [...assetsState.assets];
+
+        const sortBy = (type) => {
+            if (type === 'id') {
+                assetsClone.sort(SortByID)
+            } else {
+                assetsClone.sort(SortByName)
+            };
+
+            setAssetsState({
+                clickedColID: assetsState.clickedColID,
+                assets: assetsClone,
+                ready: true
+            });
+        };
+        sortBy(sortType);
+        
+    };
+
+  
     //Get clicked collection's assets
     const getAssets = async (id) => {
         let assetsResult = await data.getAssetsByCollectionAsync(id);
+        let aesstesSorted = assetsResult.sort(SortByName);
+        // let aesstesSorted = assetsResult.sort(SortByID);
 
         setAssetsState({
-            clickedID: id,
-            assets: assetsResult, 
+            clickedColID: id,
+            assets: aesstesSorted,
             ready: true
         })
 
     };
 
-    // Collection on Click.  
-    const getCollID = (id) => {
+    // Collection on Click Handler.  
+    const getCollIDHandler = (id) => {
         //get the ID
         let gotId = id;
         
@@ -83,13 +126,14 @@ const Collections = (props) => {
         getAssets(gotId);       
     };
     
-    //Make master Button
-    const makeMaster = (id) => {
+
+    //Make master Button Handler
+    const makeMasterHandler = (id) => {
         let clickedId = id;
 
         //find actual working collection 
         let collectionIndex = colState.collections.findIndex( el => {
-            return el.id === assetsState.clickedID
+            return el.id === assetsState.clickedColID
         });
                 
         //getting new masters object
@@ -115,8 +159,8 @@ const Collections = (props) => {
     if(colState.mastersReady) {
         collections = colState.collections.map(el =>{
             return <Collection key={el.id} name={el.name}  path={el.master.path} id={el.id} 
-                    click={() =>getCollID(el.id)}
-                    clickedID={assetsState.clickedID}/>
+                    click={() =>getCollIDHandler(el.id)}
+                    clickedID={assetsState.clickedColID}/>
         });
     };
 
@@ -124,12 +168,14 @@ const Collections = (props) => {
     return (
         <Fragment>
             <div className={classes.Collections}>
+                <p>all collections </p>
                 {collections}
             </div>
             {assetsState.ready ?  <Assets list={assetsState.assets} 
-                                        click={makeMaster}
+                                        click={makeMasterHandler}
                                         collections={colState.collections}
-                                        parentID={assetsState.clickedID}/> : null}
+                                        parentID={assetsState.clickedColID}
+                                        sortType={sortingTypeHandler}/> : null}
         </Fragment>
     )
 };

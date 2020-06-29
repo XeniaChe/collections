@@ -1,15 +1,37 @@
+
+@import '../../sass/mixins';
+
 .Assets{
-    grid-column:col-start 5/center-end;
+    grid-column:col-start 4/ full-end;
     align-self: start;
     display: grid;
-    grid-template-rows: minmax(min-content, max-content);
     grid-row-gap: .5rem;
-    align-items:  center;
-    padding: 0.5rem 0rem 4rem 0rem;
+    align-items:  stretch;
+    padding: 1.0rem 0rem 1rem 0rem;
     background-color:var(--base_color_dark);
     margin: 5rem 0rem 5rem 0rem;
-    margin-left: -5rem;
-    margin-right: -10rem;
     border-radius: 10px;
+    margin-right: 10rem;
+    
+    @include respond(tabl-lands-1100) {
+        margin-right: 3.5rem;
+    }
 
+    @include respond(phone-700) {
+        margin-right: 2.5rem;
+    }
+
+    .Header_Box{
+        display: flex;
+    }
+    .Header{
+        color: var(--color_gold);
+        font-family: var( --font_family_1);
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 2.5rem;
+
+        flex: 1;
+        align-self: center;
+    }
 }

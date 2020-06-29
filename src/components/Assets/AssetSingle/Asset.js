@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Asset.module.scss';
-// import ReactImageAppear from 'react-image-appear';
 import Button from '../../UI/Button/Button';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';

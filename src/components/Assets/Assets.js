@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import classes from './Assets.module.scss';
 import Asset from './AssetSingle/Asset';
+import Select from '../UI/Select/Select';
 
 const Assets = (props) => {
     let assetsList = props.list;
@@ -16,6 +17,10 @@ const Assets = (props) => {
 
     return (
         <div className={classes.Assets}>
+            <div className={classes.Header_Box}>
+                <Select sortType={props.sortType}/>
+                <p className={classes.Header}>assets</p>
+            </div>
             {assest}
         </div>
     )

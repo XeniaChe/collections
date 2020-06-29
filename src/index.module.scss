@@ -1,4 +1,4 @@
-@import './sass/variables';
+@import './sass/mixins';
 
 
 *,
@@ -29,6 +29,13 @@
   html{
       box-sizing: border-box;
       font-size: 62.5%;
+
+      @include respond(tabl-lands-1350) {
+        font-size: 50%;
+      }
+      @include respond(tabl-lands-1200) {
+        font-size: 45%;
+      }
   }
   
   body{

@@ -4,16 +4,8 @@
 
 .App {
   display: grid;
-  grid-template-columns: [full-start] minmax(3rem, 1fr)  [ center-start] repeat(10, [col-start] minmax(min-content, 14rem)   [col-end]) [center-end] minmax(3rem, 1fr) [full-end] ;
+  grid-template-columns: [full-start] minmax(3rem, 1fr)  [ center-start] repeat(8, [col-start] minmax(min-content,12rem)   [col-end]) [center-end] minmax(3rem, 1fr) [full-end] ;
   grid-template-rows: minmax(min-content, 25vh) minmax(70vh, max-content)  minmax(5vh,min-content) ;
-  
-  @include respond(tabl-lands-1100) {
-      grid-template-rows: minmax(min-content, 25vh ) minmax(50vh, max-content)    min-content min-content;
-  }
-
-  @include respond(tabl-port-900) {
-      grid-template-rows: minmax(min-content, 25vh ) minmax(45vh, min-content)   min-content min-content;
-  }
   background-color:var(--base_color_light);
 }
 

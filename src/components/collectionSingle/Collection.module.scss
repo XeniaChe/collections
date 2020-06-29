@@ -1,9 +1,8 @@
+@import '../../sass/mixins';
 .Collection{
-    min-height: 11.5rem;
     background-color: var( --base_color_light);
     display: grid;
-    grid-template-columns:min-content 1fr;
-    grid-template-rows: min-content;
+    grid-template-columns: min-content 1fr;
     grid-column-gap: 3rem;
     justify-items: center;
     align-items: center;
@@ -22,10 +21,19 @@
         margin: 1rem;
         border: var(--image_boredr_transp);
         transition: all .4s;
+        
+        @include respond(tabl-lands-1000) {
+            height: 9rem;
+            width: 9rem;
+        }
     }
 
     h2{
         font-size: 2.2rem;
+        justify-self: start;
+        @include respond(tabl-port-800) {
+            font-size: 1.6rem;
+        }
     }
 
     &:hover {

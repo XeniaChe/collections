@@ -1,21 +1,31 @@
+@import '../../sass/mixins';
+
 .Collections{
-    grid-column:full-start/col-end 3;
+    grid-column: full-start/col-end 2;
     align-self: start;
     display: grid;
     grid-row-gap: .5rem;
-    padding: 4rem 0rem .5rem 0rem;
+    padding: 1.0rem 0rem 1rem 0rem;
     background-color:var(--base_color_dark);
     margin: 5rem 0rem 5rem 0rem;
     align-items:  center;
     margin-left: 10rem;
     border-radius: 10px;
+
+    @include respond(tabl-lands-1100) {
+        margin-left: 3.5rem;
+    }
+
+    
+    p{
+        color: var(--color_gold);
+        font-family: var( --font_family_1);
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 2.5rem;
+        margin: 2rem;
+    }
+    
 }
 
 
-//   @include respond(tabl-lands-1100) {
-//       grid-template-rows: minmax(min-content, 25vh ) minmax(50vh, max-content)    min-content min-content;
-//   }
-
-//   @include respond(tabl-port-900) {
-//       grid-template-rows: minmax(min-content, 25vh ) minmax(45vh, min-content)   min-content min-content;
-//   }

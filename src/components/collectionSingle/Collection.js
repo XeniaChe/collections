@@ -1,4 +1,4 @@
-import React, {useState, useEffect}from 'react';
+import React from 'react';
 import classes from './Collection.module.scss';
 // import ReactImageAppear from 'react-image-appear';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
