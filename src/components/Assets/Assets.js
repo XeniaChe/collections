@@ -18,8 +18,8 @@ const Assets = (props) => {
     return (
         <div className={classes.Assets}>
             <div className={classes.Header_Box}>
-                <Select sortType={props.sortType}/>
                 <p className={classes.Header}>assets</p>
+                <Select sortType={props.sortType}/>
             </div>
             {assest}
         </div>
