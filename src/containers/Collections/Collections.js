@@ -55,39 +55,8 @@ const Collections = (props) => {
         })
     };
 
-    // const getTagsArray = () => {
-    //     const getSubtags = (obj, key2) => {
-    //         let names = [];
-    //         for ( let key in obj) {
-    //             if( key === 'name'){
-    //                 names.push(obj.name);
-    //             }
-    //             if (key2 in obj ) {
-    //                 // console.log(obj[key2].name)
-    //                 getSubtags(obj[key2], key2);    
-    //             } 
-    //         }
-    //         return names
-    //     };
-    //     let collections = [...colState.collections];
-
-    //     collections.map(el => {
-    //         let tagsArray = getSubtags(el.tags, 'subTag');
-    //         console.log(tagsArray)
-    //         return  el.tagsArray = tagsArray;
-    //     });
-    //     setColState({
-    //         collections: collections,
-    //         collectionReady: colState.collectionReady,
-    //         mastersReady: false,
-    //     })
-        
-    //     // getSubtags(tags, 'subTag');
-    // };
-
     //Calling adding INITIAL masters to collections. 
     useEffect(() => {
-        // getTagsArray();
         getMastergAsset();
     },[colState.collectionReady])
 
