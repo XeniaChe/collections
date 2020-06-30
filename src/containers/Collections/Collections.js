@@ -1,8 +1,9 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import classes from './Collections.module.scss';
 import * as data from '../data';
-import Collection from '../../components/collectionSingle/Collection';
+import Collection from '../collectionSingle/Collection';
 import Assets from '../../components/Assets/Assets';
+
 
 
 const Collections = (props) => {
@@ -31,7 +32,7 @@ const Collections = (props) => {
             })
         };
         collectionsImport();
-    }, []);
+    },[]);
 
     // Getting and adding each col-tion's INITIAL master. 
     const getMastergAsset = async () => {
@@ -49,13 +50,44 @@ const Collections = (props) => {
 
         setColState({
             collections: collections,
-            // collectionReady: colState.collectionReady,
+            collectionReady: colState.collectionReady,
             mastersReady: true
         })
     };
 
+    // const getTagsArray = () => {
+    //     const getSubtags = (obj, key2) => {
+    //         let names = [];
+    //         for ( let key in obj) {
+    //             if( key === 'name'){
+    //                 names.push(obj.name);
+    //             }
+    //             if (key2 in obj ) {
+    //                 // console.log(obj[key2].name)
+    //                 getSubtags(obj[key2], key2);    
+    //             } 
+    //         }
+    //         return names
+    //     };
+    //     let collections = [...colState.collections];
+
+    //     collections.map(el => {
+    //         let tagsArray = getSubtags(el.tags, 'subTag');
+    //         console.log(tagsArray)
+    //         return  el.tagsArray = tagsArray;
+    //     });
+    //     setColState({
+    //         collections: collections,
+    //         collectionReady: colState.collectionReady,
+    //         mastersReady: false,
+    //     })
+        
+    //     // getSubtags(tags, 'subTag');
+    // };
+
     //Calling adding INITIAL masters to collections. 
     useEffect(() => {
+        // getTagsArray();
         getMastergAsset();
     },[colState.collectionReady])
 
@@ -77,11 +109,11 @@ const Collections = (props) => {
     const SortByID = (a, b) => {
         return a.id - b.id; 
     };
+
+
     // Sorting type changing Handler
     const sortingTypeHandler = (event) => {
         let sortType = event.target.value; 
-        console.log( `sorting type changed`)
-        console.log(sortType);
 
         let assetsClone = [...assetsState.assets];
 
@@ -99,7 +131,6 @@ const Collections = (props) => {
             });
         };
         sortBy(sortType);
-        
     };
 
   
@@ -107,7 +138,6 @@ const Collections = (props) => {
     const getAssets = async (id) => {
         let assetsResult = await data.getAssetsByCollectionAsync(id);
         let aesstesSorted = assetsResult.sort(SortByName);
-        // let aesstesSorted = assetsResult.sort(SortByID);
 
         setAssetsState({
             clickedColID: id,
@@ -116,7 +146,7 @@ const Collections = (props) => {
         })
 
     };
-
+ 
     // Collection on Click Handler.  
     const getCollIDHandler = (id) => {
         //get the ID
@@ -160,7 +190,9 @@ const Collections = (props) => {
         collections = colState.collections.map(el =>{
             return <Collection key={el.id} name={el.name}  path={el.master.path} id={el.id} 
                     click={() =>getCollIDHandler(el.id)}
-                    clickedID={assetsState.clickedColID}/>
+                    clickedID={assetsState.clickedColID}
+                    tags={el.tags}
+                    />
         });
     };
 
