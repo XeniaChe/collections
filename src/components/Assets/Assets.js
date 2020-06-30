@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from './Assets.module.scss';
 import Asset from './AssetSingle/Asset';
 import Select from '../UI/Select/Select';
 
 const Assets = (props) => {
     let assetsList = props.list;
+
 
     let assest = assetsList.map( el => {
         return <Asset path={el.path} name={el.name} id={el.id} key={el.id} 
