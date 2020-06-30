@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classes from './Collection.module.scss';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-// import images from '../../images';
-
+// import Images from '../images';
 
 const Collection = (props) => {
 
@@ -22,7 +21,7 @@ const Collection = (props) => {
     //Getting tags array method 
     let tagsArray = []; 
     const getSubtags = (obj, keyCheck) => {
-        for ( let key in obj) {
+        for (let key in obj) {
             if( key === 'name'){
                 tagsArray.push(obj[key]);
             }
@@ -56,7 +55,9 @@ const Collection = (props) => {
             <LazyLoadImage
             className={classes.img}
             src={`./images/${props.path}`}
-            // src={images`/${props.path}`}
+            // // src= {reqiure(`./images/${props.path}`)}
+            // // src={Images`:${props.path}`}
+            // src={Images.images[`${props.path}`]}
             effect="blur"/>
             <h2>{props.name}</h2>
             <div className={classes.Tags_Box}>

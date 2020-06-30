@@ -79,7 +79,6 @@ const Collections = (props) => {
         return a.id - b.id; 
     };
 
-
     // Sorting type changing Handler
     const sortingTypeHandler = (event) => {
         let sortType = event.target.value; 
@@ -113,7 +112,6 @@ const Collections = (props) => {
             assets: aesstesSorted,
             ready: true
         })
-
     };
  
     // Collection on Click Handler.  
@@ -125,7 +123,6 @@ const Collections = (props) => {
         getAssets(gotId);       
     };
     
-
     //Make master Button Handler
     const makeMasterHandler = (id) => {
         let clickedId = id;
@@ -164,7 +161,6 @@ const Collections = (props) => {
                     />
         });
     };
-
 
     return (
         <Fragment>

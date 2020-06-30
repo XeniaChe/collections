@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import classes from './Assets.module.scss';
 import Asset from './AssetSingle/Asset';
-import Select from '../UI/Select/Select';
+import SelectEX from '../UI/Select/Select';
 
 const Assets = (props) => {
     let assetsList = props.list;
@@ -20,7 +20,7 @@ const Assets = (props) => {
         <div className={classes.Assets}>
             <div className={classes.Header_Box}>
                 <p className={classes.Header}>assets</p>
-                <Select sortType={props.sortType}/>
+                <SelectEX sortType={props.sortType}/>
             </div>
             {assest}
         </div>
