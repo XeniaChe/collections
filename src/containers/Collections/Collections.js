@@ -140,11 +140,13 @@ const Collections = (props) => {
             collections[collectionIndex].master = response;
             collections[collectionIndex].masterAssetId = clickedId;
 
-            setColState({
-                collections: collections,
-                collectionReady:colState.collectionReady,
-                mastersReady:colState.mastersReady,
-            });
+            setColState( prevState => {
+                return {
+                    collections: collections,
+                    collectionReady: prevState.collectionReady,
+                    mastersReady: prevState.mastersReady,
+                }
+            })
 
         };
         newMaster();        
