@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/collections/static/css/main.9bbc074a.chunk.css",
+    "main.js": "/collections/static/js/main.6a441832.chunk.js",
+    "main.js.map": "/collections/static/js/main.6a441832.chunk.js.map",
+    "runtime-main.js": "/collections/static/js/runtime-main.043e4bf0.js",
+    "runtime-main.js.map": "/collections/static/js/runtime-main.043e4bf0.js.map",
+    "static/css/2.9905d55a.chunk.css": "/collections/static/css/2.9905d55a.chunk.css",
+    "static/js/2.bf01c618.chunk.js": "/collections/static/js/2.bf01c618.chunk.js",
+    "static/js/2.bf01c618.chunk.js.map": "/collections/static/js/2.bf01c618.chunk.js.map",
+    "index.html": "/collections/index.html",
+    "precache-manifest.16831d384459a8d4866f0fb5447f8bf1.js": "/collections/precache-manifest.16831d384459a8d4866f0fb5447f8bf1.js",
+    "service-worker.js": "/collections/service-worker.js",
+    "static/css/2.9905d55a.chunk.css.map": "/collections/static/css/2.9905d55a.chunk.css.map",
+    "static/css/main.9bbc074a.chunk.css.map": "/collections/static/css/main.9bbc074a.chunk.css.map",
+    "static/js/2.bf01c618.chunk.js.LICENSE.txt": "/collections/static/js/2.bf01c618.chunk.js.LICENSE.txt",
+    "static/media/Bart.jpg": "/collections/static/media/Bart.5df5338d.jpg",
+    "static/media/Buzz.jpg": "/collections/static/media/Buzz.00c703bd.jpg",
+    "static/media/Flash.jpg": "/collections/static/media/Flash.7f4d7902.jpg",
+    "static/media/Grampa.jpg": "/collections/static/media/Grampa.434bbfe7.jpg",
+    "static/media/Green lantern.jpg": "/collections/static/media/Green lantern.04a132cc.jpg",
+    "static/media/Homer.jpg": "/collections/static/media/Homer.7980ad56.jpg",
+    "static/media/Lisa.jpg": "/collections/static/media/Lisa.8fb26054.jpg",
+    "static/media/Lloyd.jpg": "/collections/static/media/Lloyd.22ccef7a.jpg",
+    "static/media/Maggie.jpg": "/collections/static/media/Maggie.86d8b573.jpg",
+    "static/media/Marge.jpg": "/collections/static/media/Marge.260e5e15.jpg",
+    "static/media/Superman.jpg": "/collections/static/media/Superman.8035dd93.jpg",
+    "static/media/Wu.jpg": "/collections/static/media/Wu.e7ee545e.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.043e4bf0.js",
+    "static/css/2.9905d55a.chunk.css",
+    "static/js/2.bf01c618.chunk.js",
+    "static/css/main.9bbc074a.chunk.css",
+    "static/js/main.6a441832.chunk.js"
+  ]
+}
