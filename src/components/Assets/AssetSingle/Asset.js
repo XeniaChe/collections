@@ -22,12 +22,13 @@ const Asset = (props) => {
         styleBox.push(classes.Box_active)
     };
     
+    const sourceImage = require(`../../../images/${props.path}` ); 
 
     return (
         <div className={styleBox.join(' ')}>
             <LazyLoadImage 
                 effect="blur"
-                src={`./images/${props.path}`}
+                src={sourceImage}
                 className={styleImage.join(' ')}/>
             <p>{props.name}</p>
             <p>{props.id}</p>

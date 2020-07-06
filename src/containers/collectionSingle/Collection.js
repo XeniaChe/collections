@@ -50,14 +50,15 @@ const Collection = (props) => {
         }); 
     }
     
+
+    const sourceImage = require(`../../images/${props.path}` ); 
+    
     return (
         <div className={style.join(' ')} onClick={props.click}>
             <LazyLoadImage
             className={classes.img}
-            src={`./images/${props.path}`}
-            // // src= {reqiure(`./images/${props.path}`)}
-            // // src={Images`:${props.path}`}
-            // src={Images.images[`${props.path}`]}
+            // src={`./images/${props.path}`}
+            src={sourceImage}
             effect="blur"/>
             <h2>{props.name}</h2>
             <div className={classes.Tags_Box}>
