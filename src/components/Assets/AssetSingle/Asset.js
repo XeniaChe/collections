@@ -22,7 +22,9 @@ const Asset = (props) => {
         styleBox.push(classes.Box_active)
     };
     
-    const sourceImage = require(`../../../images/${props.path}` ); 
+
+    //images source
+    const sourceImage = require(`../../../images/${props.path}`); 
 
     return (
         <div className={styleBox.join(' ')}>
